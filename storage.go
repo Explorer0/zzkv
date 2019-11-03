@@ -6,6 +6,7 @@ import (
 	"io"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"sync"
 )
 
@@ -110,6 +111,7 @@ func (s DefaultPstStorager) Storage(key string, value []byte) error {
 	if writeErr != nil {
 		return writeErr
 	}
+	_ = fileHandle.Close()
 	return nil
 }
 
@@ -125,11 +127,15 @@ func (s DefaultPstStorager) Read(key string) []byte {
 	if readErr != nil {
 		panic(fmt.Sprintf("Occur fatal error while read file. errMsg[%s]", readErr))
 	}
+	_ = fileHandle.Close()
 	return result
 }
 
-func (s DefaultPstStorager) Delete(string) error {
-
+func (s DefaultPstStorager) Delete(key string) error {
+	fileName := fmt.Sprintf("%s.zzkv", key)
+	cmd := exec.Command(fmt.Sprintf("rm %s", fileName))
+	_, outErr := cmd.Output()
+	return outErr
 }
 
 func (s DefaultPstStorager) RLock() {
