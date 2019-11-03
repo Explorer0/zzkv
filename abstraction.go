@@ -29,16 +29,16 @@ func Deserialize(serializedBytes []byte, val interface{}) error {
 	return json.Unmarshal(serializedBytes, val)
 }
 
-type DefaultCompression struct {
 
+// 默认压缩器不做任何数据变动
+type DefaultCompression struct {}
+
+func (DefaultCompression) Compress(originalVal []byte) []byte {
+	return originalVal
 }
 
-func (DefaultCompression) Compress([]byte) []byte {
-	panic("implement me")
-}
-
-func (DefaultCompression) Decompress([]byte) []byte {
-	panic("implement me")
+func (DefaultCompression) Decompress(originalVal []byte) []byte {
+	return 	originalVal
 }
 
 func NewDefaultCompression() DefaultCompression {

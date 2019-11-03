@@ -2,13 +2,16 @@ package zzkv
 
 import (
 	"bytes"
+	"fmt"
 	"io"
+	"io/ioutil"
+	"os"
 	"sync"
 )
 
 // 持久化存储
 type PersistenceStorager interface {
-	Storage(key string, reader io.Reader) error
+	Storage(key string, value []byte) error
 	Read(key string) []byte
 	Delete(string) error
 	RLock()
@@ -49,7 +52,7 @@ func (s *Storager) Set(key string, val []byte, sync bool) error {
 
 	// 硬件存储
 	if sync {
-		storageErr := s.outStorage.Storage(key, bytes.NewReader(val))
+		storageErr := s.outStorage.Storage(key, val)
 		if storageErr != nil {
 			return storageErr
 		}
@@ -94,16 +97,39 @@ type DefaultPstStorager struct {
 	sync.RWMutex
 }
 
-func (s DefaultPstStorager) Storage(key string, reader io.Reader) error {
-	panic("implement me")
+func (s DefaultPstStorager) Storage(key string, value []byte) error {
+	fileName := fmt.Sprintf("%s.zzkv", key)
+	// 打开目标文件，不存在则创建
+	fileHandle, openErr := os.OpenFile(fileName, os.O_WRONLY|os.O_CREATE, 0444)
+	if openErr != nil {
+		return openErr
+	}
+
+	// 将value写入文件
+	_, writeErr := io.Copy(io.Writer(fileHandle), bytes.NewReader(value))
+	if writeErr != nil {
+		return writeErr
+	}
+	return nil
 }
 
 func (s DefaultPstStorager) Read(key string) []byte {
-	panic("implement me")
+	fileName := fmt.Sprintf("%s.zzkv", key)
+	fileHandle, openErr := os.OpenFile(fileName, os.O_RDONLY, 0444)
+	if openErr != nil {
+		panic(fmt.Sprintf("Occur fatal error while opening file. errMsg[%s]", openErr))
+	}
+
+	//从文件中读取value
+	result, readErr := ioutil.ReadAll(fileHandle)
+	if readErr != nil {
+		panic(fmt.Sprintf("Occur fatal error while read file. errMsg[%s]", readErr))
+	}
+	return result
 }
 
 func (s DefaultPstStorager) Delete(string) error {
-	panic("implement me")
+
 }
 
 func (s DefaultPstStorager) RLock() {
