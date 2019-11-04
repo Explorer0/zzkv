@@ -11,32 +11,24 @@ import (
 )
 
 // 持久化存储
-type PersistenceStorager interface {
+type PersistentStorager interface {
 	Storage(key string, value []byte) error
 	Read(key string) []byte
 	Delete(string) error
-	RLock()
-	RUnlock()
-	Lock()
-	Unlock()
 }
 
 // 缓存
 type CacheStorager interface {
 	Set(string, []byte) error
 	Get(string) []byte
-	IsExist(string) bool
 	Erase(string) error
-	RLock()
-	RUnlock()
-	Lock()
-	Unlock()
+	IsExist(string) bool
 }
 
 // 抽象存储器
 type Storager struct {
-	outStorage		PersistenceStorager
-	insideStorage 	CacheStorager
+	pstStorager		PersistentStorager
+	cacheStorager 	CacheStorager
 	storageMap 		map[string]bool
 	sync.RWMutex
 }
@@ -45,15 +37,9 @@ func (s *Storager) Set(key string, val []byte, sync bool) error {
 	s.Lock()
 	defer s.Unlock()
 
-	// 缓存
-	setErr := s.insideStorage.Set(key, val)
-	if setErr != nil {
-		return setErr
-	}
-
 	// 硬件存储
 	if sync {
-		storageErr := s.outStorage.Storage(key, val)
+		storageErr := s.pstStorager.Storage(key, val)
 		if storageErr != nil {
 			return storageErr
 		}
@@ -61,6 +47,11 @@ func (s *Storager) Set(key string, val []byte, sync bool) error {
 			s.storageMap[key] = true
 		}
 	}
+
+	//开启协程，单独写入缓存
+	go func() {
+		_ := s.cacheStorager.Set(key, val)
+	}()
 
 	return nil
 }
@@ -75,18 +66,16 @@ func (s *Storager) Get(key string) []byte  {
 	}
 
 	// 查看缓存是否命中
-	if s.insideStorage.IsExist(key) {
-		return s.insideStorage.Get(key)
+	if s.cacheStorager.IsExist(key) {
+		return s.cacheStorager.Get(key)
 	}
 
 	// 缓存未命中，从持久化存储器取
-	result := s.outStorage.Read(key)
+	result := s.pstStorager.Read(key)
 
 	// 开启协程，单独写缓存
 	go func() {
-		s.insideStorage.Lock()
-		defer s.insideStorage.Unlock()
-		_ = s.insideStorage.Set(key, result)
+		_ = s.cacheStorager.Set(key, result)
 	}()
 
 	return result
