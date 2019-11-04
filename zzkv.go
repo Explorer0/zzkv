@@ -20,8 +20,8 @@ func New(s Storager, c Compression) Zzkv {
 func NewDefault() Zzkv {
 	return Zzkv{
 		Storager:Storager{
-			outStorage:NewDefaultPstStorager(),
-			insideStorage:NewDefaultCacheStorager(),
+			pstStorager:NewDefaultPstStorager(),
+			cacheStorager:NewDefaultCacheStorager(),
 			storageMap:make(map[string]bool),
 		},
 		Compression:NewDefaultCompression(),

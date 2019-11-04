@@ -10,6 +10,8 @@ import (
 	"sync"
 )
 
+const DefaultFileMode os.FileMode = 0666
+
 // 持久化存储
 type PersistentStorager interface {
 	Storage(key string, value []byte) error
@@ -25,7 +27,7 @@ type CacheStorager interface {
 	IsExist(string) bool
 }
 
-// 抽象存储器
+// 存储器
 type Storager struct {
 	pstStorager		PersistentStorager
 	cacheStorager 	CacheStorager
@@ -50,7 +52,7 @@ func (s *Storager) Set(key string, val []byte, sync bool) error {
 
 	//开启协程，单独写入缓存
 	go func() {
-		_ := s.cacheStorager.Set(key, val)
+		_ = s.cacheStorager.Set(key, val)
 	}()
 
 	return nil
@@ -88,9 +90,11 @@ type DefaultPstStorager struct {
 }
 
 func (s DefaultPstStorager) Storage(key string, value []byte) error {
+	s.Lock()
+	defer s.Unlock()
 	fileName := fmt.Sprintf("%s.zzkv", key)
 	// 打开目标文件，不存在则创建
-	fileHandle, openErr := os.OpenFile(fileName, os.O_WRONLY|os.O_CREATE, 0444)
+	fileHandle, openErr := os.OpenFile(fileName, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, DefaultFileMode)
 	if openErr != nil {
 		return openErr
 	}
@@ -105,8 +109,11 @@ func (s DefaultPstStorager) Storage(key string, value []byte) error {
 }
 
 func (s DefaultPstStorager) Read(key string) []byte {
+	s.RLock()
+	defer s.RUnlock()
+
 	fileName := fmt.Sprintf("%s.zzkv", key)
-	fileHandle, openErr := os.OpenFile(fileName, os.O_RDONLY, 0444)
+	fileHandle, openErr := os.OpenFile(fileName, os.O_RDONLY, DefaultFileMode)
 	if openErr != nil {
 		panic(fmt.Sprintf("Occur fatal error while opening file. errMsg[%s]", openErr))
 	}
@@ -121,27 +128,14 @@ func (s DefaultPstStorager) Read(key string) []byte {
 }
 
 func (s DefaultPstStorager) Delete(key string) error {
+	s.Lock()
+	defer s.Unlock()
 	fileName := fmt.Sprintf("%s.zzkv", key)
 	cmd := exec.Command(fmt.Sprintf("rm %s", fileName))
 	_, outErr := cmd.Output()
 	return outErr
 }
 
-func (s DefaultPstStorager) RLock() {
-	s.RLock()
-}
-
-func (s DefaultPstStorager) RUnlock() {
-	s.RUnlock()
-}
-
-func (s DefaultPstStorager) Lock() {
-	s.Lock()
-}
-
-func (s DefaultPstStorager) Unlock() {
-	s.Unlock()
-}
 
 
 type DefaultCacheStorager struct {
@@ -162,22 +156,6 @@ func (s DefaultCacheStorager) IsExist(string) bool {
 
 func (s DefaultCacheStorager) Erase(string) error {
 	panic("implement me")
-}
-
-func (s DefaultCacheStorager) RLock() {
-	s.RLock()
-}
-
-func (s DefaultCacheStorager) RUnlock() {
-	s.RUnlock()
-}
-
-func (s DefaultCacheStorager) Lock() {
-	s.Lock()
-}
-
-func (s DefaultCacheStorager) Unlock() {
-	s.Unlock()
 }
 
 
