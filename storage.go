@@ -89,7 +89,7 @@ type DefaultPstStorager struct {
 	sync.RWMutex
 }
 
-func (s DefaultPstStorager) Storage(key string, value []byte) error {
+func (s *DefaultPstStorager) Storage(key string, value []byte) error {
 	s.Lock()
 	defer s.Unlock()
 	fileName := fmt.Sprintf("%s.zzkv", key)
@@ -108,7 +108,7 @@ func (s DefaultPstStorager) Storage(key string, value []byte) error {
 	return nil
 }
 
-func (s DefaultPstStorager) Read(key string) []byte {
+func (s *DefaultPstStorager) Read(key string) []byte {
 	s.RLock()
 	defer s.RUnlock()
 
@@ -127,7 +127,7 @@ func (s DefaultPstStorager) Read(key string) []byte {
 	return result
 }
 
-func (s DefaultPstStorager) Delete(key string) error {
+func (s *DefaultPstStorager) Delete(key string) error {
 	s.Lock()
 	defer s.Unlock()
 	fileName := fmt.Sprintf("%s.zzkv", key)
@@ -142,31 +142,35 @@ type DefaultCacheStorager struct {
 	sync.RWMutex
 }
 
-func (s DefaultCacheStorager) Set(string, []byte) error {
+func (s *DefaultCacheStorager) Set(string, []byte) error {
 	panic("implement me")
 }
 
-func (s DefaultCacheStorager) Get(string) []byte {
+func (s *DefaultCacheStorager) Get(string) []byte {
 	panic("implement me")
 }
 
-func (s DefaultCacheStorager) IsExist(string) bool {
+func (s *DefaultCacheStorager) IsExist(string) bool {
 	panic("implement me")
 }
 
-func (s DefaultCacheStorager) Erase(string) error {
+func (s *DefaultCacheStorager) Erase(string) error {
 	panic("implement me")
 }
 
 
 
 
-func NewDefaultPstStorager() DefaultPstStorager {
-	return DefaultPstStorager{}
+func NewDefaultPstStorager() *DefaultPstStorager {
+	return &DefaultPstStorager{
+		sync.RWMutex{},
+	}
 }
 
-func NewDefaultCacheStorager() DefaultCacheStorager {
-	return DefaultCacheStorager{}
+func NewDefaultCacheStorager() *DefaultCacheStorager {
+	return &DefaultCacheStorager{
+		sync.RWMutex{},
+	}
 }
 
 

@@ -58,15 +58,24 @@ func BenchmarkPstStoragerThreadSafety(b *testing.B) {
 	s1 := zzkv.NewDefaultPstStorager()
 	key := "fucker"
 	values := []string{"12345879&……%%我要怎么说--+++!@#$%", "45879&……%%我要怎么说-", "fucker说什么", "bitcher zzkv渣渣键值对"}
+	valMap := make(map[string]bool)
+	for _, val := range values {
+		valMap[val] = true
+	}
 
 	b.RunParallel(func(pb *testing.PB) {
 		for pb.Next() {
-			idx := rand.Intn(3)
-			setErr := s1.Storage(key, []byte(values[idx%3]))
+			idx := rand.Intn(4)
+			setErr := s1.Storage(key, []byte(values[idx%4]))
 			if setErr != nil {
 				b.Fatal(fmt.Sprintf("failed to set. errMsg[%s]", setErr))
 			}
 			_ = s1.Read(key)
+
+			fetchVal := s1.Read(key)
+			if _, ok := valMap[string(fetchVal)]; !ok && string(fetchVal) != "" {
+				b.Fatal(fmt.Sprintf("Inconsistent access data. fetchedData:[%s]", string(fetchVal)))
+			}
 		}
 	})
 }
