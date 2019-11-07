@@ -92,8 +92,9 @@ type DefaultPstStorager struct {
 func (s *DefaultPstStorager) Storage(key string, value []byte) error {
 	s.Lock()
 	defer s.Unlock()
+
 	fileName := fmt.Sprintf("%s.zzkv", key)
-	// 打开目标文件，不存在则创建
+	// 打开目标文件，不存在则创建, TRUNC标志表示清空之后再写
 	fileHandle, openErr := os.OpenFile(fileName, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, DefaultFileMode)
 	if openErr != nil {
 		return openErr
@@ -139,23 +140,35 @@ func (s *DefaultPstStorager) Delete(key string) error {
 
 
 type DefaultCacheStorager struct {
-	sync.RWMutex
+	sync.Map
+
 }
 
-func (s *DefaultCacheStorager) Set(string, []byte) error {
-	panic("implement me")
+func (s *DefaultCacheStorager) Set(key string, value []byte) (err error) {
+	s.Store(key, value)
+
+	defer func() {
+		deferErr := recover()
+		if deferErr != nil {
+			err = deferErr.(error)
+		}
+	}()
+	return
 }
 
-func (s *DefaultCacheStorager) Get(string) []byte {
-	panic("implement me")
+func (s *DefaultCacheStorager) Get(key string) []byte {
+	val, _ := s.Load(key)
+	return val.([]byte)
 }
 
-func (s *DefaultCacheStorager) IsExist(string) bool {
-	panic("implement me")
+func (s *DefaultCacheStorager) IsExist(key string) bool {
+	_, existOk := s.Load(key)
+	return existOk
 }
 
-func (s *DefaultCacheStorager) Erase(string) error {
-	panic("implement me")
+func (s *DefaultCacheStorager) Erase(key string) error {
+	s.Delete(key)
+	return nil
 }
 
 
@@ -169,7 +182,7 @@ func NewDefaultPstStorager() *DefaultPstStorager {
 
 func NewDefaultCacheStorager() *DefaultCacheStorager {
 	return &DefaultCacheStorager{
-		sync.RWMutex{},
+		sync.Map{},
 	}
 }
 
