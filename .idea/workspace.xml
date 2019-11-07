@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e87cc7df-2684-4f76-be5e-562b8d0264c8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/storage.go" beforeDir="false" afterPath="$PROJECT_DIR$/storage.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/storager_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/test/storager_test.go" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/storage.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="134">
+              <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+              <folding>
+                <element signature="e#161#262#0" />
+                <element signature="e#289#392#0" />
+                <element signature="e#415#532#0" />
+                <element signature="e#1030#1047#0" />
+                <element signature="e#1095#1133#0" />
+                <element signature="n#!!block;n#Erase#0" />
+                <element signature="e#1307#1331#0" />
+                <element signature="n#!!block;n#Storage#0" />
+                <element signature="e#1652#1668#0" />
+                <element signature="e#1822#1843#0" />
+                <element signature="e#1951#1973#0" />
+                <element signature="n#!!block;n#Read#0" />
+                <element signature="e#2123#2139#0" />
+                <element signature="e#2235#2321#0" />
+                <element signature="e#2256#2317#0" />
+                <element signature="e#2404#2487#0" />
+                <element signature="e#2425#2483#0" />
+                <element signature="n#!!block;n#Delete#0" />
+                <element signature="e#2443#2459#0" />
+                <element signature="e#2492#2511#0" />
+                <element signature="e#2807#2809#0" />
+                <element signature="e#2586#2607#0" />
+                <element signature="n#!!block;n#Set#1" />
+                <element signature="e#2720#2801#0" />
+                <element signature="e#2767#2798#0" />
+                <element signature="n#!!block;n#Get#1" />
+                <element signature="n#!!block;n#IsExist#0" />
+                <element signature="n#!!block;n#Erase#0" />
+                <element signature="n#!!block;n#NewDefaultPstStorager#0" />
+                <element signature="n#!!block;n#NewDefaultCacheStorager#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/zzkv.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="358">
+              <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="25" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/storager_test.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="171" column="17" lean-forward="true" selection-start-line="171" selection-start-column="17" selection-end-line="171" selection-end-column="17" />
+              <folding>
+                <element signature="e#19#79#0" expanded="true" />
+                <element signature="n#!!block;n#TestPstStorager#0" />
+                <element signature="n#!!block;n#BenchmarkPstStorager#0" />
+                <element signature="n#!!block;n#BenchmarkPstStoragerThreadSafety#0" />
+                <element signature="n#!!block;n#TestCacheStrager#0" />
+                <element signature="n#!!block;n#BenchmarkCacheStorager#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Go File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>0444</find>
+      <find>fmt.Print</find>
+    </findStrings>
+  </component>
+  <component name="GOROOT" path="/usr/local/Cellar/go/1.12.7/libexec" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/abstraction.go" />
+        <option value="$PROJECT_DIR$/storager_test.go" />
+        <option value="$PROJECT_DIR$/zzkv.go" />
+        <option value="$PROJECT_DIR$/test/fucker.zzkv" />
+        <option value="$PROJECT_DIR$/test/test.sh" />
+        <option value="$PROJECT_DIR$/test.go" />
+        <option value="$PROJECT_DIR$/test2/test.go" />
+        <option value="$PROJECT_DIR$/tmp_test/test.go" />
+        <option value="$PROJECT_DIR$/test/storager_test.go" />
+        <option value="$PROJECT_DIR$/storage.go" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/zzkv.iml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/thriftCompiler.xml" />
+        <option value="$PROJECT_DIR$/.idea/zzkv.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/thriftCompiler.xml" />
+        <option value="$PROJECT_DIR$/.idea/zzkv.iml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/thriftCompiler.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="x" value="1909" />
+    <option name="y" value="69" />
+    <option name="width" value="1921" />
+    <option name="height" value="956" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="zzkv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zzkv" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zzkv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zzkv" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zzkv" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zzkv" type="462c0819:PsiDirectoryNode" />
+              <item name="tmp_test" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultGoTemplateProperty" value="Go File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.gopath.indexing.explicitly.defined" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/test2" />
+      <recent name="$PROJECT_DIR$/test" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Go Build.go build test.go (1)">
+    <configuration name="go build storage.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="zzkv" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/storage.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build test.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="zzkv" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/tmp_test/test.go" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build test.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="zzkv" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/test2/test.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go Build.go build test.go (1)" />
+        <item itemvalue="Go Build.go build test.go" />
+        <item itemvalue="Go Build.go build storage.go" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1680" y="0" width="1920" height="1080" extended-state="0" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14057508" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32970297" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.26435643" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.sh" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/test/storager_test.go</url>
+          <line>56</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/tmp_test/test.go</url>
+          <line>41</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/test/storager_test.go</url>
+          <line>37</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file:///usr/local/Cellar/go/1.12.7/libexec/src/io/io.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="362" column="5" selection-start-line="362" selection-start-column="5" selection-end-line="362" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/go/1.12.7/libexec/src/os/exec/exec.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="163" column="42" lean-forward="true" selection-start-line="163" selection-start-column="42" selection-end-line="163" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/go/1.12.7/libexec/src/testing/testing.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="556" column="18" selection-start-line="556" selection-start-column="18" selection-end-line="556" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/go/1.12.7/libexec/src/os/file.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2012">
+          <caret line="281" column="50" selection-start-line="281" selection-start-column="42" selection-end-line="281" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/bitch.zzkv" />
+    <entry file="file://$PROJECT_DIR$/test/bitcher.zzkv" />
+    <entry file="file:///usr/local/Cellar/go/1.12.7/libexec/src/math/rand/rand.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="328" column="9" selection-start-line="328" selection-start-column="5" selection-end-line="328" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/fucker.zzkv" />
+    <entry file="file://$PROJECT_DIR$/bitcher.zzkv" />
+    <entry file="file://$PROJECT_DIR$/xxx.zzkv" />
+    <entry file="file:///usr/local/Cellar/go/1.12.7/libexec/src/sync/mutex.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="71" column="14" selection-start-line="71" selection-start-column="9" selection-end-line="71" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/go/1.12.7/libexec/src/sync/rwmutex.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="86" column="19" selection-start-line="86" selection-start-column="19" selection-end-line="86" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tmp_test/test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="22" column="29" lean-forward="true" selection-start-line="22" selection-start-column="29" selection-end-line="22" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/test.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/abstraction.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="43" column="48" selection-start-line="43" selection-start-column="48" selection-end-line="43" selection-end-column="48" />
+          <folding>
+            <element signature="e#134#199#0" />
+            <element signature="n#!!block;n#Serialize#0" />
+            <element signature="n#!!block;n#Deserialize#0" />
+            <element signature="n#!!block;n#Compress#0" />
+            <element signature="n#!!block;n#Decompress#0" />
+            <element signature="n#!!block;n#NewDefaultCompression#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/go/1.12.7/libexec/src/builtin/builtin.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="145" column="5" selection-start-line="145" selection-start-column="5" selection-end-line="145" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/local/Cellar/go/1.12.7/libexec/src/sync/map.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="266" column="14" selection-start-line="266" selection-start-column="14" selection-end-line="266" selection-end-column="14" />
+          <folding>
+            <element signature="e#1158#2596#0" />
+            <element signature="e#2688#2797#0" />
+            <element signature="e#3029#3869#0" />
+            <element signature="e#3907#3948#0" />
+            <element signature="e#4252#4781#0" />
+            <element signature="e#4555#4762#0" />
+            <element signature="e#4790#4814#0" />
+            <element signature="e#4887#5009#0" />
+            <element signature="e#4950#4974#0" />
+            <element signature="e#5090#5824#0" />
+            <element signature="e#5180#5193#0" />
+            <element signature="e#5273#5476#0" />
+            <element signature="e#5300#5449#0" />
+            <element signature="e#5511#5539#0" />
+            <element signature="e#5545#5807#0" />
+            <element signature="e#5566#5771#0" />
+            <element signature="e#5740#5766#0" />
+            <element signature="e#6025#6194#0" />
+            <element signature="e#6032#6192#0" />
+            <element signature="e#6085#6106#0" />
+            <element signature="e#6169#6189#0" />
+            <element signature="e#6424#6485#0" />
+            <element signature="e#6641#6690#0" />
+            <element signature="e#6966#7788#0" />
+            <element signature="e#7073#7164#0" />
+            <element signature="e#7131#7161#0" />
+            <element signature="e#7244#7345#0" />
+            <element signature="e#7271#7296#0" />
+            <element signature="e#7380#7447#0" />
+            <element signature="e#7453#7747#0" />
+            <element signature="e#7474#7679#0" />
+            <element signature="e#7648#7674#0" />
+            <element signature="e#8065#8664#0" />
+            <element signature="e#8116#8147#0" />
+            <element signature="e#8161#8205#0" />
+            <element signature="e#8416#8662#0" />
+            <element signature="e#8484#8514#0" />
+            <element signature="e#8565#8598#0" />
+            <element signature="e#8613#8659#0" />
+            <element signature="e#8828#8976#0" />
+            <element signature="e#8928#8957#0" />
+            <element signature="e#8984#9001#0" />
+            <element signature="e#9046#9213#0" />
+            <element signature="e#9053#9211#0" />
+            <element signature="e#9118#9139#0" />
+            <element signature="e#9188#9208#0" />
+            <element signature="e#9806#10633#0" />
+            <element signature="e#10103#10523#0" />
+            <element signature="e#10413#10504#0" />
+            <element signature="e#10551#10631#0" />
+            <element signature="e#10582#10599#0" />
+            <element signature="e#10614#10628#0" />
+            <element signature="e#10662#10784#0" />
+            <element signature="e#10704#10717#0" />
+            <element signature="e#10814#11023#0" />
+            <element signature="e#10835#10848#0" />
+            <element signature="e#10966#11021#0" />
+            <element signature="e#10995#11018#0" />
+            <element signature="e#11078#11260#0" />
+            <element signature="e#11125#11236#0" />
+            <element signature="e#11182#11202#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/fucker.zzkv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" lean-forward="true" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/zzkv.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="25" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/storager_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="171" column="17" lean-forward="true" selection-start-line="171" selection-start-column="17" selection-end-line="171" selection-end-column="17" />
+          <folding>
+            <element signature="e#19#79#0" expanded="true" />
+            <element signature="n#!!block;n#TestPstStorager#0" />
+            <element signature="n#!!block;n#BenchmarkPstStorager#0" />
+            <element signature="n#!!block;n#BenchmarkPstStoragerThreadSafety#0" />
+            <element signature="n#!!block;n#TestCacheStrager#0" />
+            <element signature="n#!!block;n#BenchmarkCacheStorager#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/storage.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="134">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <element signature="e#161#262#0" />
+            <element signature="e#289#392#0" />
+            <element signature="e#415#532#0" />
+            <element signature="e#1030#1047#0" />
+            <element signature="e#1095#1133#0" />
+            <element signature="n#!!block;n#Erase#0" />
+            <element signature="e#1307#1331#0" />
+            <element signature="n#!!block;n#Storage#0" />
+            <element signature="e#1652#1668#0" />
+            <element signature="e#1822#1843#0" />
+            <element signature="e#1951#1973#0" />
+            <element signature="n#!!block;n#Read#0" />
+            <element signature="e#2123#2139#0" />
+            <element signature="e#2235#2321#0" />
+            <element signature="e#2256#2317#0" />
+            <element signature="e#2404#2487#0" />
+            <element signature="e#2425#2483#0" />
+            <element signature="n#!!block;n#Delete#0" />
+            <element signature="e#2443#2459#0" />
+            <element signature="e#2492#2511#0" />
+            <element signature="e#2807#2809#0" />
+            <element signature="e#2586#2607#0" />
+            <element signature="n#!!block;n#Set#1" />
+            <element signature="e#2720#2801#0" />
+            <element signature="e#2767#2798#0" />
+            <element signature="n#!!block;n#Get#1" />
+            <element signature="n#!!block;n#IsExist#0" />
+            <element signature="n#!!block;n#Erase#0" />
+            <element signature="n#!!block;n#NewDefaultPstStorager#0" />
+            <element signature="n#!!block;n#NewDefaultCacheStorager#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

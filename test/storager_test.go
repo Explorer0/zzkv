@@ -152,3 +152,30 @@ func BenchmarkCacheStoragerThreadSafety(b *testing.B) {
 	})
 }
 
+
+func TestStrager(t *testing.T) {
+	s1 := zzkv.NewDefaultStorager()
+	key := "fucker"
+	values := []string{"12345879&……%%我要怎么说--+++!@#$%", "45879&……%%我要怎么说-", "fucker说什么", "bitcher zzkv渣渣键值对"}
+	t.Log("PersistentStorager test---------------------------")
+
+	setErr := s1.Set(key, []byte(values[0]), true)
+	if setErr != nil {
+		t.Fatal(fmt.Sprintf("failed to set. errMsg[%s]", setErr))
+	}
+
+	fetchVal := s1.Get(key)
+	if string(fetchVal) != values[0] {
+		t.Fatal(fmt.Sprintf("Inconsistent access data. index:0, fetch value:%s", string(fetchVal)))
+	}
+
+	setErr = s1.Set(key, []byte(values[1]), true)
+	if setErr != nil {
+		t.Fatal(fmt.Sprintf("failed to set. errMsg[%s]", setErr))
+	}
+
+	fetchVal = s1.Get(key)
+	if string(fetchVal) != values[1] {
+		t.Fatal(fmt.Sprintf("Inconsistent access data. index:1, fetch value:%s", string(fetchVal)))
+	}
+}

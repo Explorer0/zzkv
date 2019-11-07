@@ -16,14 +16,14 @@ const DefaultFileMode os.FileMode = 0666
 type PersistentStorager interface {
 	Storage(key string, value []byte) error
 	Read(key string) []byte
-	Delete(string) error
+	Delete(string)
 }
 
 // 缓存
 type CacheStorager interface {
 	Set(string, []byte) error
 	Get(string) []byte
-	Erase(string) error
+	Erase(string)
 	IsExist(string) bool
 }
 
@@ -38,7 +38,6 @@ type Storager struct {
 func (s *Storager) Set(key string, val []byte, sync bool) error {
 	s.Lock()
 	defer s.Unlock()
-
 	// 硬件存储
 	if sync {
 		storageErr := s.pstStorager.Storage(key, val)
@@ -51,9 +50,8 @@ func (s *Storager) Set(key string, val []byte, sync bool) error {
 	}
 
 	//开启协程，单独写入缓存
-	go func() {
-		_ = s.cacheStorager.Set(key, val)
-	}()
+	_ = s.cacheStorager.Set(key, val)
+
 
 	return nil
 }
@@ -76,13 +74,19 @@ func (s *Storager) Get(key string) []byte  {
 	result := s.pstStorager.Read(key)
 
 	// 开启协程，单独写缓存
-	go func() {
-		_ = s.cacheStorager.Set(key, result)
-	}()
+	_ = s.cacheStorager.Set(key, result)
 
 	return result
 }
 
+func (s *Storager) Erase(key string) {
+	s.Lock()
+	defer s.Unlock()
+
+	s.pstStorager.Delete(key)
+	s.cacheStorager.Erase(key)
+
+}
 
 
 type DefaultPstStorager struct {
@@ -128,13 +132,16 @@ func (s *DefaultPstStorager) Read(key string) []byte {
 	return result
 }
 
-func (s *DefaultPstStorager) Delete(key string) error {
+func (s *DefaultPstStorager) Delete(key string)  {
 	s.Lock()
 	defer s.Unlock()
+
 	fileName := fmt.Sprintf("%s.zzkv", key)
 	cmd := exec.Command(fmt.Sprintf("rm %s", fileName))
 	_, outErr := cmd.Output()
-	return outErr
+	if outErr != nil {
+		panic(outErr)
+	}
 }
 
 
@@ -166,9 +173,8 @@ func (s *DefaultCacheStorager) IsExist(key string) bool {
 	return existOk
 }
 
-func (s *DefaultCacheStorager) Erase(key string) error {
+func (s *DefaultCacheStorager) Erase(key string)  {
 	s.Delete(key)
-	return nil
 }
 
 
@@ -185,5 +191,16 @@ func NewDefaultCacheStorager() *DefaultCacheStorager {
 		sync.Map{},
 	}
 }
+
+
+func NewDefaultStorager() *Storager {
+	return &Storager{
+		pstStorager:NewDefaultPstStorager(),
+		cacheStorager:NewDefaultCacheStorager(),
+		storageMap:make(map[string]bool),
+	}
+}
+
+
 
 
