@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # 普通测试
-go test
+go test -v
 
 # 基准测试
-go test -bench=. -run=none
+go test -v -bench=. -run=none
 

@@ -1,8 +1,10 @@
 package zzkv
 
 import (
+	"github.com/gogf/gf/encoding/gcompress"
 	"encoding/json"
 	"github.com/pkg/errors"
+
 )
 
 var NoneError = errors.New("nil value")
@@ -33,14 +35,23 @@ func Deserialize(serializedBytes []byte, val interface{}) error {
 // 默认压缩器不做任何数据变动
 type DefaultCompression struct {}
 
-func (DefaultCompression) Compress(originalVal []byte) []byte {
-	return originalVal
+func (compress *DefaultCompression) Compress(originalVal []byte) []byte {
+	data, err := gcompress.Gzip(originalVal)
+	if err != nil {
+		panic(err)
+	}
+	return data
 }
 
-func (DefaultCompression) Decompress(originalVal []byte) []byte {
-	return 	originalVal
+func (compress *DefaultCompression) Decompress(compressedVal []byte) []byte {
+	data, err := gcompress.UnGzip(compressedVal)
+	if err != nil {
+		panic(err)
+	}
+
+	return data
 }
 
-func NewDefaultCompression() DefaultCompression {
-	return DefaultCompression{}
+func NewDefaultCompression() *DefaultCompression {
+	return &DefaultCompression{}
 }

@@ -38,22 +38,32 @@ type Storager struct {
 func (s *Storager) Set(key string, val []byte, sync bool) error {
 	s.Lock()
 	defer s.Unlock()
-	// 硬件存储
-	if sync {
-		storageErr := s.pstStorager.Storage(key, val)
-		if storageErr != nil {
-			return storageErr
+	var setErr error
+	setChan := make(chan int8)
+
+	// 开启协程持久化写入
+	go func() {
+		if sync {
+			storageErr := s.pstStorager.Storage(key, val)
+			if storageErr != nil {
+				setErr = storageErr
+			}
+			if _, ok := s.storageMap[key]; !ok {
+				s.storageMap[key] = true
+			}
 		}
-		if _, ok := s.storageMap[key]; !ok {
-			s.storageMap[key] = true
-		}
+		// 通知主线程
+		setChan<-1
+	}()
+
+	// 写入缓存
+	cacheErr := s.cacheStorager.Set(key, val)
+	if cacheErr != nil {
+		setErr = cacheErr
 	}
+	<-setChan
 
-	//开启协程，单独写入缓存
-	_ = s.cacheStorager.Set(key, val)
-
-
-	return nil
+	return setErr
 }
 
 func (s *Storager) Get(key string) []byte  {
@@ -73,7 +83,7 @@ func (s *Storager) Get(key string) []byte  {
 	// 缓存未命中，从持久化存储器取
 	result := s.pstStorager.Read(key)
 
-	// 开启协程，单独写缓存
+	// 写缓存
 	_ = s.cacheStorager.Set(key, result)
 
 	return result
