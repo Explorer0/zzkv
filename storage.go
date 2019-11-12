@@ -70,14 +70,14 @@ func (s *Storager) Get(key string) []byte  {
 	s.RLock()
 	defer s.RUnlock()
 
-	// 查看是否存在
-	if _, ok := s.storageMap[key]; !ok {
-		return nil
-	}
-
 	// 查看缓存是否命中
 	if s.cacheStorager.IsExist(key) {
 		return s.cacheStorager.Get(key)
+	}
+
+	// 查看是否存在
+	if _, ok := s.storageMap[key]; !ok {
+		return nil
 	}
 
 	// 缓存未命中，从持久化存储器取
