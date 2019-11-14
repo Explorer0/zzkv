@@ -119,6 +119,12 @@ func (s *DefaultPstStorager) Storage(key string, value []byte) error {
 	if writeErr != nil {
 		return writeErr
 	}
+	// 同步入磁盘
+	syncErr := fileHandle.Sync()
+	if syncErr != nil {
+		return syncErr
+	}
+
 	_ = fileHandle.Close()
 	return nil
 }

@@ -18,7 +18,8 @@ func TestCompression(t *testing.T) {
 	zipComp := zzkv.NewDefaultCompression()
 	compressData := string(zipComp.Compress([]byte(data)))
 	decompressData := string(zipComp.Decompress([]byte(compressData)))
-	t.Log("------------Test Compression PASS------------")
 	t.Log(fmt.Sprintf("compressed: %s", compressData))
 	t.Log(fmt.Sprintf("decompressed: %s", decompressData))
+	t.Log("------------Test Compression PASS------------")
+
 }
