@@ -9,7 +9,7 @@ import (
 
 var NoneError = errors.New("nil value")
 
-// 压缩接口
+// 压缩器接口
 type Compression interface {
 	Compress([]byte) []byte
 	Decompress([]byte) []byte
@@ -32,7 +32,7 @@ func Deserialize(serializedBytes []byte, val interface{}) error {
 }
 
 
-// 默认压缩器不做任何数据变动
+// 默认压缩器，采用Gzip压缩
 type DefaultCompression struct {}
 
 func (compress *DefaultCompression) Compress(originalVal []byte) []byte {
