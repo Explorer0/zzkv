@@ -3,7 +3,7 @@ package zzkv
 type Zzkv struct {
 	Storager
 	Compression
-	Clear
+	*Clear
 }
 
 func New(s Storager, c Compression) Zzkv {
@@ -26,11 +26,11 @@ func NewDefault() *Zzkv {
 			storageMap:make(map[string]bool),
 		},
 		Compression:NewDefaultCompression(),
+		Clear:NewDefaultClear(),
 	}
-
-	z.Run(&z.Storager)
+	// 启动TTL清除器
+	z.Clear.Run(&z.Storager)
 	return z
-
 }
 
 func (z *Zzkv) Set(key string, val interface{}, sync bool) error {
@@ -51,6 +51,16 @@ func (z *Zzkv) Set(key string, val interface{}, sync bool) error {
 	return nil
 }
 
+func (z *Zzkv) SetWithTTL(key string, val interface{}, sync bool, ttlTime int64) error {
+	setErr := z.Set(key, val, sync)
+	if setErr != nil {
+		return setErr
+	}
+
+	z.Clear.Mark(key, ttlTime)
+	return nil
+}
+
 func (z *Zzkv) Get(key string, val interface{}) error {
 	// 获取数据
 	data := z.Storager.Get(key)
@@ -67,6 +77,8 @@ func (z *Zzkv) Get(key string, val interface{}) error {
 
 	return nil
 }
+
+
 
 
 

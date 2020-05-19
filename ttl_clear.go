@@ -7,12 +7,13 @@ import (
 
 const IntervalDuration = 60		//60s
 
+
 type Clear struct {
 	ttlMap 		map[string]int64
 	sync.Mutex
 }
 
-func NewClear() *Clear {
+func NewDefaultClear() *Clear {
 	return &Clear{
 		make(map[string]int64),
 		sync.Mutex{},
@@ -54,7 +55,7 @@ func (clear *Clear) TimingErase(storager *Storager) {
 func (clear *Clear) Run(storager *Storager) {
 	ticker := time.NewTicker(time.Second * IntervalDuration)
 	go func() {
-		for _ = range ticker.C {
+		for range ticker.C {
 			clear.TimingErase(storager)
 		}
 	}()

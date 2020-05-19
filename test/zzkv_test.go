@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/zzkv"
 	"testing"
+	"time"
 )
 
 type TestStt struct {
@@ -32,4 +33,23 @@ func TestZzkv(t *testing.T)  {
 	}
 
 	t.Log("----------------Test Zzkv PASS--------------------")
+}
+
+func TestZzkvClear(t *testing.T) {
+	z1 := zzkv.NewDefault()
+	t1 := TestStt{X:"fucker", Y:"shiter"}
+	t2 := &TestStt{}
+	key := "nba"
+
+	err := z1.SetWithTTL(key, t1, true, 5)
+	if err != nil {
+		t.Fatal(fmt.Sprintf("Failed to set kv. errMsg[%s]", err))
+	}
+	time.Sleep(time.Second*10)
+	err = z1.Get(key, t2)
+	if err != nil {
+		t.Fatal(fmt.Sprintf("Failed to get kv. errMsg[%s]", err))
+	}
+
+	t.Log("----------------Test ZzkvClear PASS--------------------")
 }
